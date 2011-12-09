@@ -1,0 +1,60 @@
+#gamescreen
+{
+	background-color: black;
+	max-width: 640px;
+	max-height: 480px;
+	width: 640px;
+	height: 480px;
+	color: green;
+	overflow: hidden;
+	border: 5px solid black;
+}
+
+#scores
+{
+	max-width: 630px;
+	font-size: 20px;
+	color: white;
+	height: 25px;
+}
+
+#playarea
+{
+	width: 630px;
+	max-width: 630px;
+	overflow: hidden;
+}
+
+#grass
+{
+	background-color: #68A941;
+}
+
+#home
+{
+	background: transparent url(images/goal1.png) repeat-x -1px 0;
+}
+
+#wall
+{
+	background: black url(images/wall1.png) repeat-x;
+}
+
+#water
+{
+	background-color: #7C70DA;
+}
+
+#frog
+{
+	margin: 3px;
+}
+
+#message
+{
+	color: white;
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+	font-family: Verdana, sans-serif;
+}

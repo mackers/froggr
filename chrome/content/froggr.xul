@@ -1,0 +1,132 @@
+<?xml version="1.0"?> 
+
+<!--
+   - The contents of this file are subject to the Netscape Public
+   - License Version 1.1 (the "License"); you may not use this file
+   - except in compliance with the License. You may obtain a copy of
+   - the License at http://www.mozilla.org/NPL/
+   -  
+   - Software distributed under the License is distributed on an "AS
+   - IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+   - implied. See the License for the specific language governing
+   - rights and limitations under the License.
+   -  
+   - The Original Code is Mozilla Communicator client code, released
+   - March 31, 1998.
+   - 
+   - The Initial Developer of the Original Code is Netscape
+   - Communications Corporation. Portions created by Netscape are
+   - Copyright (C) 1999 Netscape Communications Corporation. All
+   - Rights Reserved.
+   - 
+   - Contributor(s):
+   -    David McNamara
+  -->
+
+<!--
+   - Froggr
+   - Version 0.1
+  -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="froggr.css" type="text/css"?>
+
+<window id="main-window" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/TR/REC-html40"
+	title="Froggr"
+	orient="vertical"
+	align="center"
+	onload="load_froggr();"
+	>
+
+	<script src="froggr.js"/>
+
+        <broadcasterset id="broadcasterset">
+                <broadcaster id="Game:up" oncommand="key_up();"/>
+                <broadcaster id="Game:down" oncommand="key_down();"/>
+                <broadcaster id="Game:left" oncommand="key_left();"/>
+                <broadcaster id="Game:right" oncommand="key_right();"/>
+	</broadcasterset>
+
+	<keyset>
+		<key id="up-key" keycode="VK_UP" observes="Game:up"/>
+		<key id="down-key" keycode="VK_DOWN" observes="Game:down"/>
+		<key id="left-key" keycode="VK_LEFT" observes="Game:left"/>
+		<key id="right-key" keycode="VK_RIGHT" observes="Game:right"/>
+	</keyset>
+
+	<deck id="gamescreen">
+
+		<vbox>
+
+			<hbox id="scores">
+				<text value=" 1 UP "/>
+				<text id="score" value="00000"/>
+				<text value="FROGGR" flex="1" style="text-align: center; color: green; font-weight: bold;"/>
+				<text id="lives" value="4"/>
+				<text value=" FROGS "/>
+			</hbox>
+
+			<stack id="playarea">
+
+				<hbox id="home" left="0" top="0" width="640" height="37">
+					<image id="home0" src="images/goal1-empty.png" width="126" height="37"/>
+					<image id="home1" src="images/goal1-empty.png" width="126" height="37"/>
+					<image id="home2" src="images/goal1-empty.png" width="126" height="37"/>
+					<image id="home3" src="images/goal1-empty.png" width="126" height="37"/>
+					<image id="home4" src="images/goal1-empty.png" width="126" height="37"/>
+				</hbox>
+
+				<hbox id="water" left="0" top="37" width="640" height="183"/>
+				<hbox id="wall" left="0" top="222" width="640" height="37"/>
+				<hbox id="grass" left="0" top="407" width="630" height="37"/>
+
+				<image id="fly" src="images/fly1.png" width="24" height="20" top="12" left="-51"/>
+				<image id="croc" src="images/croc2.png" width="126" height="37" top="0" left="-126"/>
+
+				<image class="row9" src="images/croc1.png" width="137" height="30" top="37" left="0"/>
+				<image class="row9" src="images/croc1.png" width="137" height="30" top="37" left="250"/>
+				<image class="row9" src="images/croc1.png" width="137" height="30" top="37" left="500"/>
+
+				<image class="row8" src="images/turtles2.png" width="120" height="30" top="74" left="0"/>
+				<image class="row8" src="images/turtles2.png" width="120" height="30" top="74" left="250"/>
+				<image class="row8" src="images/turtles2.png" width="120" height="30" top="74" left="500"/>
+
+				<image class="row7" src="images/log2.png" width="287" height="30" top="111" left="0"/>
+				<image class="row7" src="images/log2.png" width="287" height="30" top="111" left="400"/>
+
+				<image class="row6" src="images/log1.png" width="152" height="30" top="148" left="0"/>
+				<image class="row6" src="images/log1.png" width="152" height="30" top="148" left="250"/>
+				<image class="row6" src="images/log1.png" width="152" height="30" top="148" left="500"/>
+
+				<image class="row5" src="images/turtles1.png" width="189" height="30" top="185" left="0"/>
+				<image class="row5" src="images/turtles1.png" width="189" height="30" top="185" left="275"/>
+				<image class="row5" src="images/turtles1.png" width="189" height="30" top="185" left="550"/>
+
+				<image class="row4" src="images/snake1.png" width="80" height="30" top="222" left="-80"/>
+
+				<image id="frog" src="images/frog1-n.png" width="30" height="30" top="407" left="300"/>
+
+				<image class="row3" src="images/truck1.png" width="140" height="30" top="259" left="0"/>
+				<image class="row3" src="images/truck1.png" width="140" height="30" top="259" left="400"/>
+
+				<image class="row2" src="images/car2.png" width="70" height="30" top="296" left="0"/>
+				<image class="row2" src="images/car2.png" width="70" height="30" top="296" left="315"/>
+
+				<image class="row1" src="images/digger1.png" width="70" height="30" top="333" left="0"/>
+				<image class="row1" src="images/digger1.png" width="70" height="30" top="333" left="200"/>
+				<image class="row1" src="images/digger1.png" width="70" height="30" top="333" left="400"/>
+
+				<image class="row0" src="images/car1.png" width="70" height="30" top="370" left="0"/>
+				<image class="row0" src="images/car1.png" width="70" height="30" top="370" left="250"/>
+				<image class="row0" src="images/car1.png" width="70" height="30" top="370" left="500"/>
+
+				<text id="message" value="" width="630" height="30" top="160" left="0"/>
+			</stack>
+
+		</vbox>
+
+	</deck>
+
+</window>
