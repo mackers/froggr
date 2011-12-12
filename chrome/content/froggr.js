@@ -101,16 +101,21 @@ function frog_new_life()
 
 function frog_die()
 {
+    if (this.dead)
+        return;
+
+	this.lives--;
+
 	if (this.lives == 0)
 	{
 		this.dead = 1;
 		add_message("Game Over!");
-		setTimeout("new_game()", 2000);
+        document.getElementById("lives").setAttribute("value", "0");
+		setTimeout(function() new_game(), 2000);
 		return;
 	}
 
-	this.lives--;
-	//setTimeout("new_life()", 1000);
+	//setTimeout(function() new_life(), 1000);
 	this.new_life();
 }
 
@@ -406,7 +411,7 @@ function load_froggr()
 	fly = new Fly(document.getElementById("fly"));
 	croc = new Croc(document.getElementById("croc"));
 
-	setInterval("tick()", 50);
+	setInterval(function() tick(), 50);
 
 	new_game();
 }
@@ -415,7 +420,8 @@ function add_score(points)
 {
 	score += points * (1 + level * 0.5);
 
-	document.getElementById("score").setAttribute("value", (score + "").pad(6, '0', 0));
+    document.getElementById("score").setAttribute("value",
+        str_pad(score + "", 6, '0', 0));
 }
 
 function add_message(message)
@@ -424,7 +430,7 @@ function add_message(message)
 
 	if (message != "")
 	{
-		setTimeout("add_message('')", 2000);
+		setTimeout(function() add_message(''), 2000);
 	}
 }
 
@@ -516,9 +522,9 @@ function tick()
 	frog.redraw();
 }
 
-String.prototype.pad = function(l, s, t)
+var str_pad = function(str, l, s, t)
 {
-	return s || (s = " "), (l -= this.length) > 0 ? (s = new Array(Math.ceil(l / s.length)
+	return s || (s = " "), (l -= str.length) > 0 ? (s = new Array(Math.ceil(l / s.length)
 		+ 1).join(s)).substr(0, t = !t ? l : t == 1 ? 0 : Math.ceil(l / 2))
-		+ this + s.substr(0, l - t) : this;
+		+ str + s.substr(0, l - t) : str;
 };
